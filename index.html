@@ -1,481 +1,460 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>CodePen - Sakura Animation using WebGl</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://reyzen-rey.github.io/animation.css">
-    <!-- <link rel="stylesheet" href="http://localhost:8080/backup/resources/css/animation.css"> -->
-
-    <title>Undangan</title>
-
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
-        @font-face {
-            font-family: 'Better Saturday Regular';
-            font-style: normal;
-            font-weight: normal;
-            src: local('Better Saturday Regular'), url('Better Saturday free.woff') format('woff');
+        .fadeInUp {
+            -webkit-animation-name: fadeInUp;
+            animation-name: fadeInUp;
+            -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
         }
 
-        body {
-            background-color: #242424;
+        @-webkit-keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+            }
         }
 
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            /* position: fixed; */
-            margin: 0 auto;
-            bottom: 0;
-            width: 390px;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
-            padding: 10px 20px;
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+            }
         }
 
-        .navbar i {
-            color: white;
-            cursor: pointer;
-        }
-
-        .navbar i:hover {
-            color: #df4f4f;
-        }
-
-        .navbar .iactive {
-            color: #df4f4f;
-        }
-
-        .navbar a {
-            /* float: left; */
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            /* padding: 14px 16px; */
-            text-decoration: none;
-            font-size: 17px;
-            border-radius: 25px;
-        }
-
-        .navbar a:hover {
-            background: #f1f1f1;
-            color: black;
-        }
-
-        .navbar a.active {
-            background-color: #04AA6D;
-            color: white;
-        }
-
-        .main {
-            background-image: url('https://reyzen-rey.github.io/wd_background-2.png');
-            background-size: cover;
-            width: 390px;
-            height: 580px;
-            display: block;
-            align-items: center;
-            margin: 0 auto;
+        #container {
             position: relative;
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
         }
 
-        .frameW {
+        #container canvas,
+        #overlay {
+            width: 100%;
+            position: absolute;
 
-            /* position: sticky;
-            z-index: 1; */
-            padding-top: 180px;
-            padding-left: 30px;
-            padding-right: 30px;
-            margin: 0 auto;
+        }
+
+        .lop {
+            padding: 20px 20px;
+        }
+
+        .kos {
+            margin: auto;
             text-align: center;
+            align-items: center;
+            width: 60%;
+            height: 600px;
+            margin-top: 20px;
+            padding: 20px 20px;
+
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 1);
+            overflow: hidden;
         }
 
-        .nama p {
-            font-family: 'Better Saturday Regular';
-            font-size: 30px;
-        }
-
-        .nama p br {
-            display: block;
-            margin: 2px 0;
-        }
-
-        .btnOpen {
-            border-radius: 20px;
-            width: 200px;
-            color: white;
-        }
-
-        .openPageCSS {
-            color: white;
-
-            display: none;
-
+        .flo {
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            height: 100%;
-            margin: auto;
-
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
-
-            background: rgba(0, 0, 0, 0.33);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
         }
 
-        .openPageCSS img {
-            width: 150px;
+        .flo img {
+            width: 500px;
+            margin-bottom: -100px;
         }
 
-        .onePageCSS {
-            display: none;
-            font-family: 'Signika Negative', sans-serif;
-
-            color: white;
-
-            display: none;
-
+        .floUp {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
             width: 100%;
-            height: 100%;
-            margin: auto;
-
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
-
-            background: rgba(0, 0, 0, 0.33);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
         }
 
-        .onePageCSS .frameW {
-            padding-top: 140px;
+        .floUp img {
+            width: 500px;
+            margin-top: -125px;
         }
 
-        .twoPageCSS {
-            display: none;
-            font-family: 'Signika Negative', sans-serif;
-
-            color: white;
-
-            display: none;
-
+        .bdy {
             width: 100%;
-            height: 100%;
-            margin: auto;
-
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
-
-            background: rgba(0, 0, 0, 0.33);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            padding: 155px 50px;
         }
 
-        .twoPageCSS .frameW {
-            padding-top: 110px;
+        .bdy h1,
+        small {
+            font-family: 'Marck Script', cursive;
         }
 
-        .twoPageCSS .nama p {
-            font-size: 12px;
-            font-family: 'Kalam'
+        .bdy h1 {
+            font-size: 7vw;
+            color: #000000;
         }
 
-        .twoPageCSS table {
-            margin: auto;
+        .bdy small {
+            font-size: 55px;
+            color: #cc0000;
         }
 
-        .twoPageCSS table img {
-            width: 100px;
-        }
-
-        .twoPageCSS table b {
-            color: red;
-            font-family: 'Kalam'
-        }
-
-        .threePageCSS {
-            display: none;
-            font-family: 'Signika Negative', sans-serif;
-
-            color: white;
-
-            display: none;
-
-            width: 100%;
-            height: 100%;
-            margin: auto;
-
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
-
-            background: rgba(0, 0, 0, 0.33);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        .threePageCSS .frameW {
-            padding-top: 100px;
-        }
-
-        .threePageCSS p {
-            font-family: 'Redressed', cursive;
-            font-size: 30px;
-        }
-
-        .threePageCSS .title-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 17px;
-        }
-
-        .fourPageCSS {
-            display: none;
-            font-family: 'Signika Negative', sans-serif;
-
-            color: white;
-
-            display: none;
-
-            width: 100%;
-            height: 100%;
-            margin: auto;
-
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
-
-            background: rgba(0, 0, 0, 0.33);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        .fourPageCSS .frameW {
-            padding-top: 140px;
-        }
-
-        .fourPageCSS .title-text {
-            font-family: 'Redressed', cursive;
-            font-size: 30px;
-        }
-
-        .fourPageCSS .sub-text {
-            font-size: 12px;
-        }
-
-        .penutupPageCSS {
-
-            display: none;
-            font-family: 'Signika Negative', sans-serif;
-
-            color: white;
-
-
-            width: 100%;
-            height: 100%;
-            margin: auto;
-
-            border-top-right-radius: 16px;
-            border-top-left-radius: 16px;
-
-            background: rgba(0, 0, 0, 0.33);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        .penutupPageCSS .frameW {
-            padding-top: 140px;
-        }
-
-
-        .penutupPageCSS .sub-text {
-            font-size: 14px;
-        }
-
-        .pgx {
-            display: block;
+        .bdy p {
+            font-family: 'Balsamiq Sans', cursive;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 1px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="main">
-        <div id="openPage" class="openPageCSS">
-            <div class="frameW fadeIn">
-                <img class="fadeInDown" src="https://reyzen-rey.github.io/title.png">
-                <p class="fadeIn" style="font-family: 'Monotype Corsiva';">Yth. <br>Honor Kejaksaan Negeri Barito Kuala</p>
-                <!-- <button onclick="openOnePage()" class="btn btn-outline-secondary btnOpen">BUKA UNDANGAN</button> -->
-            </div>
-        </div>
-        <div id="onePage" class="onePageCSS">
-            <div class="frameW">
-                <div class="nama">
-                    <p class="fadeInDown">Reky Saputra</p>
-                    <p class="fadeInDown">Riezcha Airidha</p>
-                </div>
-            </div>
-        </div>
-        <div id="twoPage" class="twoPageCSS">
-            <div class="frameW">
-                <p class="fadeInDown">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</p>
-                <div class="nama fadeIn">
-                    <p>Assalamu'alaikum Warahmatullahi Wabarakatuh
-                        Dengan memohon rahmat dan ridho Allah SWT,
-                        Mohon do'a restu Bapak/Ibu/Saudara/i dalam rangka melangsungkan pernikahan putra-putri kami:</p>
-                </div>
-                <table>
-                    <tbody>
-                        <!-- <tr>
-                            <td>
-                                <img src="http://localhost:8080/sync/resources/img/oxygen-lib_favicon.png">
-                            </td>
-                            <td>
-                                <img src="http://localhost:8080/sync/resources/img/oxygen-lib_favicon.png">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="fadeInDown">
-                                <b>Rhesa Widyana Hefny, S.Kom.</b>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Thornton</td>
-                            <td>Larry</td>
-                        </tr> -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div id="threePage" class="threePageCSS">
-            <div class="frameW fadeIn">
-                <p class="fadeInDown">Rangkaian Acara</p>
-                <table style="width: 100%;text-align:center;">
-                    <tbody>
-                        <tr>
-                            <td style="padding: 10px 20px;">
-                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px;"></span>
-                            </td>
-                            <td class="title-text" style="width:80%;">Akad Nikah</td>
-                            <td style="padding: 10px 20px;">
-                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="font-size: 12px;">08:00 WITA | Minggu, 20 Februari 2022</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="font-size: 12px;">Calamus Ballroom, Rattan Inn Hotel Banjarmasin</td>
-                        </tr>
-                        <tr>
-                            <td><br></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 10px 20px;">
-                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px;"></span>
-                            </td>
-                            <td class="title-text">Resepsi</td>
-                            <td style="padding: 10px 20px;">
-                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="font-size: 12px;">11:00 WITA | Minggu, 20 Februari 2022</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="font-size: 12px;">Calamus Ballroom, Rattan Inn Hotel Banjarmasin
-                                Jalan Ahmad Yani KM 5,7, Pemurus Dalam,
-                                Banjarmasin Selatan, Kota Banjarmasin,
-                                Kalimantan Selatan 70238</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div id="fourPage" class="fourPageCSS">
-            <div class="frameW fadeIn">
-                <p class="fadeInDown title-text">Peta</p>
-                <p class="fadeInDown sub-text">Calamus Ballroom, Rattan Inn Hotel Banjarmasin
-                    Jalan Ahmad Yani KM 5,7, Pemurus Dalam,
-                    Banjarmasin Selatan, Kota Banjarmasin,
-                    Kalimantan Selatan 70238</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d837.6220873810064!2d114.76327984004689!3d-2.9795787308666486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de44e4ae58dc097%3A0xa3c2c31c39609be4!2sKejaksaan%20Negeri%20Barito%20Kuala!5e0!3m2!1sen!2sid!4v1645427987309!5m2!1sen!2sid" style="width: 100%;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
+    <div id="container">
+        <canvas id="sakura"></canvas>
+        <div id="overlay">
 
-        <div id="penutupPage" class="penutupPageCSS">
-            <div class="frameW fadeIn">
-                <p class="fadeInDown sub-text">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do’a restu kepada kedua mempelai.</p>
-                <p class="fadeInDown sub-text">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah)
-                    bagi kaum yang berpikir."
-                    (QS. Ar-Rum: 21)</p>
-                <p class="fadeInDown sub-text"><i>Wassalamu'alaikum Warahmatullahi Wabarakatuh</i></p>
-                <div style="padding: 10px;text-align: center;font-size:14px">
-                    <b>"Website Invitation by"</b> <br> <a href="">@reyzen_rey</a>
-                    <br><span style="font-size:12px"><b>+6285229867654</b></span>
-                </div>
-            </div>
-        </div>
+            <div class="lop">
+                <div class="kos fadeIn">
+                    <div class="floUp">
+                        <img class="fadeInDown" src="./flower.png">
+                    </div>
+                    <div class="bdy">
+                        <p class="fadeInUp">Congratulation</p>
+                        <h1 class="fadeIn">Reyzen<small>x</small>Shuzuku</h1>
+                        <p class="fadeInDown" style="font-family: 'Kalam';font-size:40px">Happy Wedding</p>
+                        <!-- <p class="fadeInUp">20 Maret 2022</p> -->
+                    </div>
+                    <div class="flo">
+                        <img class="fadeInUp" src="./flower.png">
+                    </div>
 
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
-    <div class="navbar">
-        <!-- <a href="#home"><i class="fa-solid fa-house"></i></a>
-        <a href="#news" onclick="openOnePage()"><i class="fa-solid fa-book"></i></a>
-        <a href="#contact" onclick="openTwoPage()"><i class="fa-solid fa-heart"></i></a> -->
-        <i data-id="openPage" class="fa-solid fa-house iactive"></i>
-        <i data-id="onePage" class="fa-solid fa-book"></i>
-        <i data-id="twoPage" class="fa-solid fa-heart"></i>
-        <i data-id="threePage" class="fa-solid fa-calendar-check"></i>
-        <i data-id="fourPage" class="fa-solid fa-map-location-dot"></i>
-        <i data-id="penutupPage" class="fa-solid fa-circle-info"></i>
-    </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script>
-        $('.navbar i').on('click', function() {
-            let unkn = $(this).parents().children('i')
-            for (index = 0; index < unkn.length; index++) {
-                $(unkn[index]).removeClass('iactive')
-            }
-            $(this).addClass('iactive')
-            $(this).data('id')
-            let csx = $('.main').children('div')
-            for (index = 0; index < csx.length; index++) {
-                if ($(this).data('id') == $(csx[index])[0].id) {
-                    $(csx[index]).addClass('pgx')
-                    $(csx[index]).css('display', 'block')
-                } else {
-                    $(csx[index]).removeClass('pgx')
-                    $(csx[index]).css('display', 'none')
-                }
-            }
-        })
+    <script id="sakura_point_vsh" type="x-shader/x_vertex">
+        uniform mat4 uProjection;
+uniform mat4 uModelview;
+uniform vec3 uResolution;
+uniform vec3 uOffset;
+uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius
+uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start
 
-        $(document).ready(function() {
-            $('#openPage').addClass('pgx')
-        })
-    </script>
+attribute vec3 aPosition;
+attribute vec3 aEuler;
+attribute vec2 aMisc; //x:size, y:fade
+
+varying vec3 pposition;
+varying float psize;
+varying float palpha;
+varying float pdist;
+
+//varying mat3 rotMat;
+varying vec3 normX;
+varying vec3 normY;
+varying vec3 normZ;
+varying vec3 normal;
+
+varying float diffuse;
+varying float specular;
+varying float rstop;
+varying float distancefade;
+
+void main(void) {
+    // Projection is based on vertical angle
+    vec4 pos = uModelview * vec4(aPosition + uOffset, 1.0);
+    gl_Position = uProjection * pos;
+    gl_PointSize = aMisc.x * uProjection[1][1] / -pos.z * uResolution.y * 0.5;
+    
+    pposition = pos.xyz;
+    psize = aMisc.x;
+    pdist = length(pos.xyz);
+    palpha = smoothstep(0.0, 1.0, (pdist - 0.1) / uFade.z);
+    
+    vec3 elrsn = sin(aEuler);
+    vec3 elrcs = cos(aEuler);
+    mat3 rotx = mat3(
+        1.0, 0.0, 0.0,
+        0.0, elrcs.x, elrsn.x,
+        0.0, -elrsn.x, elrcs.x
+    );
+    mat3 roty = mat3(
+        elrcs.y, 0.0, -elrsn.y,
+        0.0, 1.0, 0.0,
+        elrsn.y, 0.0, elrcs.y
+    );
+    mat3 rotz = mat3(
+        elrcs.z, elrsn.z, 0.0, 
+        -elrsn.z, elrcs.z, 0.0,
+        0.0, 0.0, 1.0
+    );
+    mat3 rotmat = rotx * roty * rotz;
+    normal = rotmat[2];
+    
+    mat3 trrotm = mat3(
+        rotmat[0][0], rotmat[1][0], rotmat[2][0],
+        rotmat[0][1], rotmat[1][1], rotmat[2][1],
+        rotmat[0][2], rotmat[1][2], rotmat[2][2]
+    );
+    normX = trrotm[0];
+    normY = trrotm[1];
+    normZ = trrotm[2];
+    
+    const vec3 lit = vec3(0.6917144638660746, 0.6917144638660746, -0.20751433915982237);
+    
+    float tmpdfs = dot(lit, normal);
+    if(tmpdfs < 0.0) {
+        normal = -normal;
+        tmpdfs = dot(lit, normal);
+    }
+    diffuse = 0.4 + tmpdfs;
+    
+    vec3 eyev = normalize(-pos.xyz);
+    if(dot(eyev, normal) > 0.0) {
+        vec3 hv = normalize(eyev + lit);
+        specular = pow(max(dot(hv, normal), 0.0), 20.0);
+    }
+    else {
+        specular = 0.0;
+    }
+    
+    rstop = clamp((abs(pdist - uDOF.x) - uDOF.y) / uDOF.z, 0.0, 1.0);
+    rstop = pow(rstop, 0.5);
+    //-0.69315 = ln(0.5)
+    distancefade = min(1.0, exp((uFade.x - pdist) * 0.69315 / uFade.y));
+}
+</script>
+    <script id="sakura_point_fsh" type="x-shader/x_fragment">
+        #ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+
+uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius
+uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start
+
+const vec3 fadeCol = vec3(0.08, 0.03, 0.06);
+
+varying vec3 pposition;
+varying float psize;
+varying float palpha;
+varying float pdist;
+
+//varying mat3 rotMat;
+varying vec3 normX;
+varying vec3 normY;
+varying vec3 normZ;
+varying vec3 normal;
+
+varying float diffuse;
+varying float specular;
+varying float rstop;
+varying float distancefade;
+
+float ellipse(vec2 p, vec2 o, vec2 r) {
+    vec2 lp = (p - o) / r;
+    return length(lp) - 1.0;
+}
+
+void main(void) {
+    vec3 p = vec3(gl_PointCoord - vec2(0.5, 0.5), 0.0) * 2.0;
+    vec3 d = vec3(0.0, 0.0, -1.0);
+    float nd = normZ.z; //dot(-normZ, d);
+    if(abs(nd) < 0.0001) discard;
+    
+    float np = dot(normZ, p);
+    vec3 tp = p + d * np / nd;
+    vec2 coord = vec2(dot(normX, tp), dot(normY, tp));
+    
+    //angle = 15 degree
+    const float flwrsn = 0.258819045102521;
+    const float flwrcs = 0.965925826289068;
+    mat2 flwrm = mat2(flwrcs, -flwrsn, flwrsn, flwrcs);
+    vec2 flwrp = vec2(abs(coord.x), coord.y) * flwrm;
+    
+    float r;
+    if(flwrp.x < 0.0) {
+        r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.36, 0.96) * 0.5);
+    }
+    else {
+        r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.58, 0.96) * 0.5);
+    }
+    
+    if(r > rstop) discard;
+    
+    vec3 col = mix(vec3(1.0, 0.8, 0.75), vec3(1.0, 0.9, 0.87), r);
+    float grady = mix(0.0, 1.0, pow(coord.y * 0.5 + 0.5, 0.35));
+    col *= vec3(1.0, grady, grady);
+    col *= mix(0.8, 1.0, pow(abs(coord.x), 0.3));
+    col = col * diffuse + specular;
+    
+    col = mix(fadeCol, col, distancefade);
+    
+    float alpha = (rstop > 0.001)? (0.5 - r / (rstop * 2.0)) : 1.0;
+    alpha = smoothstep(0.0, 1.0, alpha) * palpha;
+    
+    gl_FragColor = vec4(col * 0.5, alpha);
+}
+</script>
+    <!-- effects -->
+    <script id="fx_common_vsh" type="x-shader/x_vertex">
+        uniform vec3 uResolution;
+attribute vec2 aPosition;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    gl_Position = vec4(aPosition, 0.0, 1.0);
+    texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);
+    screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
+}
+</script>
+    <script id="bg_fsh" type="x-shader/x_fragment">
+        #ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+
+uniform vec2 uTimes;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    vec3 col;
+    float c;
+    vec2 tmpv = texCoord * vec2(0.8, 1.0) - vec2(0.95, 1.0);
+    c = exp(-pow(length(tmpv) * 1.8, 2.0));
+    col = mix(vec3(0.02, 0.0, 0.03), vec3(0.96, 0.98, 1.0) * 1.5, c);
+    gl_FragColor = vec4(col * 0.5, 1.0);
+}
+</script>
+    <script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
+        #ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform vec2 uDelta;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    vec4 col = texture2D(uSrc, texCoord);
+    gl_FragColor = vec4(col.rgb * 2.0 - vec3(0.5), 1.0);
+}
+</script>
+    <script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
+        #ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform vec2 uDelta;
+uniform vec4 uBlurDir; //dir(x, y), stride(z, w)
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    vec4 col = texture2D(uSrc, texCoord);
+    col = col + texture2D(uSrc, texCoord + uBlurDir.xy * uDelta);
+    col = col + texture2D(uSrc, texCoord - uBlurDir.xy * uDelta);
+    col = col + texture2D(uSrc, texCoord + (uBlurDir.xy + uBlurDir.zw) * uDelta);
+    col = col + texture2D(uSrc, texCoord - (uBlurDir.xy + uBlurDir.zw) * uDelta);
+    gl_FragColor = col / 5.0;
+}
+</script>
+    <!-- effect fragment shader template -->
+    <script id="fx_common_fsh" type="x-shader/x_fragment">
+        #ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform vec2 uDelta;
+
+varying vec2 texCoord;
+varying vec2 screenCoord;
+
+void main(void) {
+    gl_FragColor = texture2D(uSrc, texCoord);
+}
+</script>
+    <!-- post processing -->
+    <script id="pp_final_vsh" type="x-shader/x_vertex">
+        uniform vec3 uResolution;
+attribute vec2 aPosition;
+varying vec2 texCoord;
+varying vec2 screenCoord;
+void main(void) {
+    gl_Position = vec4(aPosition, 0.0, 1.0);
+    texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);
+    screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
+}
+</script>
+    <script id="pp_final_fsh" type="x-shader/x_fragment">
+        #ifdef GL_ES
+//precision mediump float;
+precision highp float;
+#endif
+uniform sampler2D uSrc;
+uniform sampler2D uBloom;
+uniform vec2 uDelta;
+varying vec2 texCoord;
+varying vec2 screenCoord;
+void main(void) {
+    vec4 srccol = texture2D(uSrc, texCoord) * 2.0;
+    vec4 bloomcol = texture2D(uBloom, texCoord);
+    vec4 col;
+    col = srccol + bloomcol * (vec4(1.0) + srccol);
+    col *= smoothstep(1.0, 0.0, pow(length((texCoord - vec2(0.5)) * 2.0), 1.2) * 0.5);
+    col = pow(col, vec4(0.45454545454545)); //(1.0 / 2.2)
+    
+    gl_FragColor = vec4(col.rgb, 1.0);
+    gl_FragColor.a = 1.0;
+}
+</script>
+    <!-- partial -->
+    <script src="./script.js"></script>
 
 </body>
 
