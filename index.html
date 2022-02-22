@@ -1,12 +1,483 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./animation.css">
+    <!-- <link rel="stylesheet" href="http://localhost:8080/backup/resources/css/animation.css"> -->
+
+    <title>Hello, world!</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+        @font-face {
+            font-family: 'Better Saturday Regular';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Better Saturday Regular'), url('Better Saturday free.woff') format('woff');
+        }
+
+        body {
+            background-color: #242424;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            /* position: fixed; */
+            margin: 0 auto;
+            bottom: 0;
+            width: 390px;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            padding: 10px 20px;
+        }
+
+        .navbar i {
+            color: white;
+            cursor: pointer;
+        }
+
+        .navbar i:hover {
+            color: #df4f4f;
+        }
+
+        .navbar .iactive {
+            color: #df4f4f;
+        }
+
+        .navbar a {
+            /* float: left; */
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            /* padding: 14px 16px; */
+            text-decoration: none;
+            font-size: 17px;
+            border-radius: 25px;
+        }
+
+        .navbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .main {
+            background-image: url('./wd_background-2.png');
+            background-size: cover;
+            width: 390px;
+            height: 580px;
+            display: block;
+            align-items: center;
+            margin: 0 auto;
+            position: relative;
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+        }
+
+        .frameW {
+
+            /* position: sticky;
+            z-index: 1; */
+            padding-top: 180px;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .nama p {
+            font-family: 'Better Saturday Regular';
+            font-size: 30px;
+        }
+
+        .nama p br {
+            display: block;
+            margin: 2px 0;
+        }
+
+        .btnOpen {
+            border-radius: 20px;
+            width: 200px;
+            color: white;
+        }
+
+        .openPageCSS {
+            color: white;
+
+            display: none;
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.33);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .openPageCSS img {
+            width: 150px;
+        }
+
+        .onePageCSS {
+            display: none;
+            font-family: 'Signika Negative', sans-serif;
+
+            color: white;
+
+            display: none;
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.33);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .onePageCSS .frameW {
+            padding-top: 140px;
+        }
+
+        .twoPageCSS {
+            display: none;
+            font-family: 'Signika Negative', sans-serif;
+
+            color: white;
+
+            display: none;
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.33);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .twoPageCSS .frameW {
+            padding-top: 110px;
+        }
+
+        .twoPageCSS .nama p {
+            font-size: 12px;
+            font-family: 'Kalam'
+        }
+
+        .twoPageCSS table {
+            margin: auto;
+        }
+
+        .twoPageCSS table img {
+            width: 100px;
+        }
+
+        .twoPageCSS table b {
+            color: red;
+            font-family: 'Kalam'
+        }
+
+        .threePageCSS {
+            display: none;
+            font-family: 'Signika Negative', sans-serif;
+
+            color: white;
+
+            display: none;
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.33);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .threePageCSS .frameW {
+            padding-top: 100px;
+        }
+
+        .threePageCSS p {
+            font-family: 'Redressed', cursive;
+            font-size: 30px;
+        }
+
+        .threePageCSS .title-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 17px;
+        }
+
+        .fourPageCSS {
+            display: none;
+            font-family: 'Signika Negative', sans-serif;
+
+            color: white;
+
+            display: none;
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.33);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .fourPageCSS .frameW {
+            padding-top: 140px;
+        }
+
+        .fourPageCSS .title-text {
+            font-family: 'Redressed', cursive;
+            font-size: 30px;
+        }
+
+        .fourPageCSS .sub-text {
+            font-size: 12px;
+        }
+
+        .penutupPageCSS {
+
+            display: none;
+            font-family: 'Signika Negative', sans-serif;
+
+            color: white;
+
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+            border-top-right-radius: 16px;
+            border-top-left-radius: 16px;
+
+            background: rgba(0, 0, 0, 0.33);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .penutupPageCSS .frameW {
+            padding-top: 140px;
+        }
+
+
+        .penutupPageCSS .sub-text {
+            font-size: 14px;
+        }
+
+        .pgx {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World !</h1>
+    <br>
+    <div class="main">
+        <div id="openPage" class="openPageCSS">
+            <div class="frameW fadeIn">
+                <img class="fadeInDown" src="./title.png">
+                <p class="fadeIn" style="font-family: 'Monotype Corsiva';">Yth. <br>Honor Kejaksaan Negeri Barito Kuala</p>
+                <button onclick="openOnePage()" class="btn btn-outline-secondary btnOpen">BUKA UNDANGAN</button>
+            </div>
+        </div>
+        <div id="onePage" class="onePageCSS">
+            <div class="frameW">
+                <p class="fadeInDown">TOGETHER<br>WITH THEIR FAMILIES</p>
+                <div class="nama">
+                    <p class="fadeInDown">Tachibana Reyzen</p>
+                </div>
+                <p class="fadeInDown">WE INVITE YOU TO JOIN OUR WEDDING</p>
+            </div>
+        </div>
+        <div id="twoPage" class="twoPageCSS">
+            <div class="frameW">
+                <p class="fadeInDown">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</p>
+                <div class="nama fadeIn">
+                    <p>Assalamu'alaikum Warahmatullahi Wabarakatuh
+                        Dengan memohon rahmat dan ridho Allah SWT,
+                        Mohon do'a restu Bapak/Ibu/Saudara/i dalam rangka melangsungkan pernikahan putra-putri kami:</p>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="http://localhost:8080/sync/resources/img/oxygen-lib_favicon.png">
+                            </td>
+                            <td>
+                                <img src="http://localhost:8080/sync/resources/img/oxygen-lib_favicon.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="fadeInDown">
+                                <b>Rhesa Widyana Hefny, S.Kom.</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Thornton</td>
+                            <td>Larry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="threePage" class="threePageCSS">
+            <div class="frameW fadeIn">
+                <p class="fadeInDown">Rangkaian Acara</p>
+                <table style="width: 100%;text-align:center;">
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px 20px;">
+                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px;"></span>
+                            </td>
+                            <td class="title-text" style="width:80%;">Akad Nikah</td>
+                            <td style="padding: 10px 20px;">
+                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="font-size: 12px;">08:00 WITA | Minggu, 20 Februari 2022</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="font-size: 12px;">Calamus Ballroom, Rattan Inn Hotel Banjarmasin</td>
+                        </tr>
+                        <tr>
+                            <td><br></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 20px;">
+                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px;"></span>
+                            </td>
+                            <td class="title-text">Resepsi</td>
+                            <td style="padding: 10px 20px;">
+                                <span style="background-color: white;width:80px;height:2px;display:block;border-radius:20px"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="font-size: 12px;">11:00 WITA | Minggu, 20 Februari 2022</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="font-size: 12px;">Calamus Ballroom, Rattan Inn Hotel Banjarmasin
+                                Jalan Ahmad Yani KM 5,7, Pemurus Dalam,
+                                Banjarmasin Selatan, Kota Banjarmasin,
+                                Kalimantan Selatan 70238</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="fourPage" class="fourPageCSS">
+            <div class="frameW fadeIn">
+                <p class="fadeInDown title-text">Peta</p>
+                <p class="fadeInDown sub-text">Calamus Ballroom, Rattan Inn Hotel Banjarmasin
+                    Jalan Ahmad Yani KM 5,7, Pemurus Dalam,
+                    Banjarmasin Selatan, Kota Banjarmasin,
+                    Kalimantan Selatan 70238</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d837.6220873810064!2d114.76327984004689!3d-2.9795787308666486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de44e4ae58dc097%3A0xa3c2c31c39609be4!2sKejaksaan%20Negeri%20Barito%20Kuala!5e0!3m2!1sen!2sid!4v1645427987309!5m2!1sen!2sid" style="width: 100%;" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div id="penutupPage" class="penutupPageCSS">
+            <div class="frameW fadeIn">
+                <p class="fadeInDown sub-text">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do’a restu kepada kedua mempelai.</p>
+                <p class="fadeInDown sub-text">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah)
+                    bagi kaum yang berpikir."
+                    (QS. Ar-Rum: 21)</p>
+                <p class="fadeInDown sub-text"><i>Wassalamu'alaikum Warahmatullahi Wabarakatuh</i></p>
+                <div style="padding: 10px;text-align: center;font-size:14px">
+                    <b>"Website Invitation by"</b> <br> <a href="">@reyzen_rey</a>
+                    <br><span style="font-size:12px"><b>+6285229867654</b></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="navbar">
+        <!-- <a href="#home"><i class="fa-solid fa-house"></i></a>
+        <a href="#news" onclick="openOnePage()"><i class="fa-solid fa-book"></i></a>
+        <a href="#contact" onclick="openTwoPage()"><i class="fa-solid fa-heart"></i></a> -->
+        <i data-id="openPage" class="fa-solid fa-house iactive"></i>
+        <i data-id="onePage" class="fa-solid fa-book"></i>
+        <i data-id="twoPage" class="fa-solid fa-heart"></i>
+        <i data-id="threePage" class="fa-solid fa-calendar-check"></i>
+        <i data-id="fourPage" class="fa-solid fa-map-location-dot"></i>
+        <i data-id="penutupPage" class="fa-solid fa-circle-info"></i>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        $('.navbar i').on('click', function() {
+            let unkn = $(this).parents().children('i')
+            for (index = 0; index < unkn.length; index++) {
+                $(unkn[index]).removeClass('iactive')
+            }
+            $(this).addClass('iactive')
+            $(this).data('id')
+            let csx = $('.main').children('div')
+            for (index = 0; index < csx.length; index++) {
+                if ($(this).data('id') == $(csx[index])[0].id) {
+                    $(csx[index]).addClass('pgx')
+                    $(csx[index]).css('display', 'block')
+                } else {
+                    $(csx[index]).removeClass('pgx')
+                    $(csx[index]).css('display', 'none')
+                }
+            }
+        })
+
+        $(document).ready(function() {
+            $('#openPage').addClass('pgx')
+        })
+    </script>
+
 </body>
+
 </html>
