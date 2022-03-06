@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://reyzen-rey.github.io/undangan/animation.css">
+    <title>Undangan</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+
+        body {
+            background-color: red;
+        }
+
+        .bg-content {
+            background-image: url('https://reyzen-rey.github.io/undangan/bg_white_new.jpg');
+            height: 200px;
+            width: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: calc(100% - 54px);
+            background-position: center;
+            background-repeat: no-repeat;
+            /* background-size: cover; */
+            z-index: 1;
+        }
+
+
+
+        @media screen and (min-width: 0px) and (max-width: 500px) {
+
+            .rsOverflow {
+
+                height: 100% !important;
+
+            }
+
+        }
+
+        .rsABlock {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            position: absolute;
+            inset: 20px;
+            box-shadow: rgba(50, 50, 50, 0.2) 0px 1px 2px 0px, rgba(50, 50, 50, 0.7) 0px 1px 8px 0px;
+            z-index: 0;
+            display: block;
+            opacity: 1;
+            transition-property: opacity;
+            transition-duration: 1200ms;
+            transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+        .rsABlock2 {
+            background-image: url('https://reyzen-rey.github.io/undangan/bg_white_new.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            inset: 0px;
+        }
+
+        .imag {
+            width: 250px;
+            top: 0px;
+            position: absolute;
+            right: 0px;
+            z-index: 0;
+            display: block;
+            opacity: 1;
+            transition-property: opacity;
+            transition-duration: 800ms;
+            transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+        .imag2 {
+            width: 250px;
+            bottom: 0px;
+            position: absolute;
+            left: 0px;
+            z-index: 0;
+            display: block;
+            opacity: 1;
+            transition-property: opacity;
+            transition-duration: 800ms;
+            transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+        .cover {
+            /* width: 1px; */
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            left: 50%;
+            top: 5%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .subcover {
+            margin-left: -160px;
+            width: 320px;
+            margin-top: -230px;
+        }
+
+        .rsABlock h1 {
+            position: fixed;
+            bottom: 0;
+        }
+
+        .navbar {
+
+            overflow: hidden;
+            background-color: #333;
+            /* position: fixed; */
+            margin: 0 auto;
+            bottom: 0;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 10px 20px;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .navbar i {
+            color: white;
+            cursor: pointer;
+        }
+
+        .navbar i:hover {
+            color: #df4f4f;
+        }
+
+        .navbar .iactive {
+            color: #df4f4f;
+        }
+
+        .navbar a {
+            /* float: left; */
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            /* padding: 14px 16px; */
+            text-decoration: none;
+            font-size: 17px;
+            border-radius: 25px;
+        }
+
+        .navbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .ima {
+            /* background-color: red; */
+            width: 100%;
+            height: 20px;
+            position: absolute;
+        }
+
+        .hideDiv {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <style>
+        .main .mox {
+            background-image: url('https://reyzen-rey.github.io/undangan/bg_white_new.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            inset: 0px;
+            z-index: 3;
+
+        }
+
+        .main .moxSampul {
+            background-image: url('https://reyzen-rey.github.io/undangan/back.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            inset: 0px;
+            z-index: 3;
+
+        }
+
+        .main img {
+            z-index: 4;
+        }
+
+        .main .max {
+            margin-top: 180px;
+            z-index: 5;
+            width: 100%;
+            position: absolute;
+            inset: 0px;
+            padding: 20px 20px;
+            text-align: center;
+            font-family: 'Redressed', cursive;
+        }
+
+        .main .maxSampul {
+            margin-top: 350px;
+            z-index: 5;
+            width: 100%;
+            position: absolute;
+            inset: 0px;
+            padding: 20px 20px;
+            text-align: center;
+            font-family: 'Redressed', cursive;
+        }
+
+        .main .maxSampul p {
+            margin: 0;
+            text-shadow: 2px 2px 2px #CE5937;
+        }
+
+        .main .max p {
+            margin: 0;
+        }
+
+        .main .max .btnBuka {
+            margin-top: 20px;
+        }
+
+        .golden-btn {
+            margin-top: 20px;
+            display: inline-block;
+            outline: none;
+            font-family: inherit;
+            font-size: 1em;
+            box-sizing: border-box;
+            border: none;
+            /* border-radius: .3em; */
+            border-radius: 20px;
+            height: 2.75em;
+            line-height: 2.5em;
+            text-transform: uppercase;
+            padding: 0 1em;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(110, 80, 20, .4),
+                inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
+                inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+            background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
+            background-color: rgba(0, 0, 0, .0);
+            border: 1px solid #a55d07;
+            color: rgb(120, 50, 5);
+            text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            background-size: 100% 100%;
+            background-position: center;
+        }
+
+        .golden-btn:focus,
+        .golden-btn:hover {
+            background-size: 150% 150%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
+                inset 0 -2px 5px 1px #b17d10,
+                inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+            border: 1px solid rgba(165, 93, 7, .6);
+            color: rgba(120, 50, 5, .8);
+        }
+
+        .golden-btn:active {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(110, 80, 20, .4),
+                inset 0 -2px 5px 1px #b17d10,
+                inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+        }
+    </style>
+    <div id="tab-buka" class="main ">
+        <div class="mox"></div>
+        <div class="max fadeIn">
+            <img src="https://reyzen-rey.github.io/undangan/logo.png" width="70%" alt="">
+            <div style="margin-top: 20px;">
+                <p>Yth.</p>
+                <p>Bapaka Unknows</p>
+                <p>(di tempat)</p>
+            </div>
+            <button id="btnBuka" class="golden-btn fadeInDown">BUKA UNDANGAN</button>
+        </div>
+        <img class="imag fadeInDown" src="https://reyzen-rey.github.io/undangan/lilyflower-top.png">
+        <img class="imag2 fadeInUp" src="https://reyzen-rey.github.io/undangan/lilyflower-btm.png">
+    </div>
+
+    <div id="tab-sampul" class="main hideDiv">
+        <div class="moxSampul fadeIn"></div>
+        <div class="maxSampul fadeIn">
+            <div style="margin-top: 20px;">
+                <p style="font-size: 18px;color:white;">The Wedding of</p>
+                <p><b style="font-size: 32px;color:white;">Alexa & Steve</b></p>
+                <p style="font-size: 18px;color:white;">20 Maret 2022</p>
+            </div>
+            <button id="btnBuka2" class="golden-btn fadeInDown">BUKA</button>
+        </div>
+        <img class="imag fadeInDown" src="https://reyzen-rey.github.io/undangan/lilyflower-top.png">
+        <img class="imag2 fadeInUp" src="https://reyzen-rey.github.io/undangan/lilyflower-btm.png">
+    </div>
+
+
+    <div id="utama" class="hideDiv">
+        <div class="rsABlock2" data-move-offset="450" data-delay="0" data-speed="1200" data-move-effect="none"></div>
+        <img class="imag" data-move-offset="450" data-delay="600" data-speed="800" data-move-effect="none" src="https://reyzen-rey.github.io/undangan/lilyflower-top.png">
+        <img class="imag2" data-move-offset="450" data-delay="600" data-speed="800" data-move-effect="none" src="https://reyzen-rey.github.io/undangan/lilyflower-btm.png">
+
+        <div class="rsABlock" data-move-offset="450" data-delay="0" data-speed="1200" data-move-effect="none">
+            <!-- <img class="ima" src="./frame_white.png" style="width: 100%;height:100%"> -->
+            <div class="foot">
+                <div class="navbar">
+                    <!-- <i data-id="tab-1" class="fa-solid fa-house iactive"></i>
+                <i data-id="tab-2" class="fa-solid fa-book"></i> -->
+                    <i data-id="tab-1" class="fa-solid fa-heart iactive"></i>
+                    <i data-id="tab-2" class="fa-solid fa-calendar-check"></i>
+                    <i data-id="tab-3" class="fa-solid fa-map-location-dot"></i>
+                    <i data-id="tab-4" class="fa-solid fa-circle-info"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cover">
+            <div id="tab">
+                <!-- <div id="tab-1" class="subcover fadeIn">
+                <div style="margin:0px;font-size: 12px; margin-bottom: 0px; display: block; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-property: -webkit-transform, opacity; transition-duration: 1000ms; transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);" class="rsABlock" data-move-offset="50" data-delay="100" data-speed="1000" data-move-effect="top">
+                    <img src="./back.png" width="100%">
+                </div>
+            </div> -->
+
+                <div id="tab-1" class="subcover fadeIn ">
+                    <div style="margin:20px;font-size: 12px; margin-bottom: 20px; display: block; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-property: -webkit-transform, opacity; transition-duration: 1000ms; transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);" class="rsABlock" data-move-offset="50" data-delay="100" data-speed="1000" data-move-effect="top">
+
+                        <div>بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</div><br>
+                        <div>
+                            <i>Assalamu'alaikum Warahmatullahi Wabarakatuh</i>
+                        </div>
+                        <div style="font-family: 'Redressed' , cursive;">Dengan memohon Rahmat dan Ridho Allah SWT, Kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri tasyakuran pernikahan putra-putri kami :</div>
+
+                        <div class="mt-5" style="text-align: center;">
+                            <style>
+                                .table-mempelai p {
+                                    margin: 0;
+                                }
+
+                                .font_nama_mempelai {
+                                    font-family: 'Playball', cursive;
+                                    font-size: 24px;
+                                }
+                            </style>
+                            <table class="table-mempelai" style="border-collapse: collapse; width: 80%;margin:auto;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <img src="https://reyzen-rey.github.io/undangan/girl.png" style="border-radius: 95px; width: 95px; height: auto; object-fit: cover; border: 4px solid rgb(221, 221, 221); box-shadow: rgba(181, 158, 122, 0.5) 0px 1px 2px 0px, rgba(181, 158, 122, 0.9) 0px 1px 8px 0px; ">
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <img src="https://reyzen-rey.github.io/undangan/boy.png" style="border-radius: 95px; width: 95px; height: auto; object-fit: cover; border: 4px solid rgb(221, 221, 221); box-shadow: rgba(181, 158, 122, 0.5) 0px 1px 2px 0px, rgba(181, 158, 122, 0.9) 0px 1px 8px 0px; ">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="width: 50%;">
+                                            <p class="font_nama_mempelai"><b>Alexa, S.Kom.</b></p>
+                                            <img src="https://reyzen-rey.github.io/undangan/line1.png" width="60%" alt="">
+                                            <p style="font-family: 'Redressed', cursive;">Putri Kedua</p>
+                                            <p style="font-family: 'Redressed', cursive;">Bapak Tachibana Reyzen</p>
+                                            <p style="font-family: 'Redressed', cursive;">Ibu Tachibana Shuzu</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="width: 50%;">
+                                            <p class="font_nama_mempelai"><b>Steve, S.Kom.</b></p>
+                                            <img src="https://reyzen-rey.github.io/undangan/line1.png" width="60%" alt="">
+                                            <p style="font-family: 'Redressed' , cursive;">Putra Pertama</p>
+                                            <p style="font-family: 'Redressed', cursive;">Bapak Tachibana Alfha</p>
+                                            <p style="font-family: 'Redressed', cursive;">Ibu Tachibana Miko</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-2" class="subcover fadeIn hideDiv">
+                    <div style="margin:20px;font-size: 12px; margin-bottom: 20px; display: block; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-property: -webkit-transform, opacity; transition-duration: 1000ms; transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);" class="rsABlock" data-move-offset="50" data-delay="100" data-speed="1000" data-move-effect="top">
+
+                        <div style="font-family: 'Redressed' , cursive;">
+                            <p style="font-size: 24px;"><b>Rangkaian Acara</b></p>
+                            <style>
+                                table .line {
+                                    width: 100%;
+                                    height: 1px;
+                                    background-color: #ebb400;
+                                    display: block;
+                                    border-radius: 100px;
+                                }
+
+                                .table-Akad p {
+                                    margin: 0;
+                                }
+                            </style>
+                            <table style="width: 80%;margin:auto;">
+                                <tbody>
+                                    <tr>
+                                        <td><span class="line"></span></td>
+                                        <td style="color: #b19973;text-align: center;padding: 0px 15px;white-space: nowrap;width: 1px;font-size: 18px;">Akad Nikah</td>
+                                        <td><span class="line"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table-Akad" style="width: 80%;margin:auto;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 40%;">
+                                            <p>Minggu</p>
+                                            <p>08:00 WITA</p>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <div style="border-radius: 58px;width: 58px;height: 58px;border: 3px solid rgb(255, 255, 255);font-size: 36px;color: rgb(255, 255, 255);background-color: rgb(51, 51, 51);box-shadow: rgba(150, 150, 150, 0.5) 0px 1px 2px 0px, rgba(150, 150, 150, 0.7) 0px 1px 8px 0px;display: block;transform: translate3d(0px, 0px, 0px);opacity: 1;transition-property: -webkit-transform, opacity;transition-duration: 800ms;transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);">
+
+                                                <div style="margin-top:0;margin-left:-1px">
+
+                                                    <b style="font-size: 28px;">
+                                                        20
+                                                    </b>
+
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        <td style="width: 40%;">
+                                            <p>Maret</p>
+                                            <p>2022</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>Calamus Ballroom, Rattan Inn Hotel Banjarmasin</p>
+                            <table style="width: 80%;margin:auto;">
+                                <tbody>
+                                    <tr>
+                                        <td><span class="line"></span></td>
+                                        <td style="color: #b19973;text-align: center;padding: 0px 15px;white-space: nowrap;width: 1px;font-size: 18px;">Resepsi</td>
+                                        <td><span class="line"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table-Akad" style="width: 80%;margin:auto;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 40%;">
+                                            <p>Minggu</p>
+                                            <p>08:00 WITA</p>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <div style="border-radius: 58px;width: 58px;height: 58px;border: 3px solid rgb(255, 255, 255);font-size: 36px;color: rgb(255, 255, 255);background-color: rgb(51, 51, 51);box-shadow: rgba(150, 150, 150, 0.5) 0px 1px 2px 0px, rgba(150, 150, 150, 0.7) 0px 1px 8px 0px;display: block;transform: translate3d(0px, 0px, 0px);opacity: 1;transition-property: -webkit-transform, opacity;transition-duration: 800ms;transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);">
+
+                                                <div style="margin-top:0;margin-left:-1px">
+
+                                                    <b style="font-size: 28px;">
+                                                        20
+                                                    </b>
+
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        <td style="width: 40%;">
+                                            <p>Maret</p>
+                                            <p>2022</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <style>
+                                .acaraP p {
+                                    margin: 0;
+                                    font-size: 14px;
+                                }
+                            </style>
+                            <br>
+                            <div class="acaraP">
+                                <p>Calamus Ballroom, Rattan Inn Hotel Banjarmasin</p>
+                                <p>Jalan Ahmad Yani KM 5,7, Pemurus Dalam,</p>
+                                <p>Banjarmasin Selatan, Kota Banjarmasin, </p>
+                                <p>Kalimantan Selatan 70238</p>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div id="tab-3" class="subcover fadeIn hideDiv">
+                    <div style="margin:20px;font-size: 12px; margin-bottom: 20px; display: block; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-property: -webkit-transform, opacity; transition-duration: 1000ms; transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);" class="rsABlock" data-move-offset="50" data-delay="100" data-speed="1000" data-move-effect="top">
+                        <style>
+                            .maps-acara {
+                                width: 100%;
+                            }
+
+                            .maps-acara iframe {
+                                height: 400px;
+                            }
+                        </style>
+                        <div class="maps-acara">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31894.554218237525!2d113.9081216!3d-2.2216704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dfcb25094706e19%3A0xbb98948229782892!2sBundaran%20Besar%20Palangkaraya!5e0!3m2!1sen!2sid!4v1646545585060!5m2!1sen!2sid" width="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <div style="font-family: 'Redressed' , cursive;font-size:20px;">
+                                <br>
+                                <p><b>Bundaran Besar Palangkaraya</b></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="tab-4" class="subcover fadeIn hideDiv">
+                    <div style="margin:20px;font-size: 12px; margin-bottom: 20px; display: block; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-property: -webkit-transform, opacity; transition-duration: 1000ms; transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);" class="rsABlock" data-move-offset="50" data-delay="100" data-speed="1000" data-move-effect="top">
+                        <div style="font-family: 'Redressed' , cursive;">
+                            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do’a restu kepada kedua mempelai.</p>
+                            <p>
+                                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+                                (QS. Ar-Rum: 21)"</p>
+                            <p><i>Wassalamu'alaikum Warahmatullahi Wabarakatuh</i></p>
+                            <br>
+                            <style>
+                                .deBy p {
+                                    margin: 0;
+                                    font-size: 16px;
+                                }
+                            </style>
+                            <div class="deBy">
+                                <p>Website Invitation by</p>
+                                <p><b>@reyzen_rey</b></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+
+    <script>
+        $('#btnBuka').on('click', function() {
+            $('#tab-buka').addClass('hideDiv')
+            $('#tab-sampul').removeClass('hideDiv')
+        })
+        $('#btnBuka2').on('click', function() {
+            $('#tab-buka').addClass('hideDiv')
+            $('#tab-sampul').addClass('hideDiv')
+            $('#utama').removeClass('hideDiv')
+        })
+        $('.navbar i').on('click', function() {
+            let unkn = $(this).parents().children('i')
+            for (index = 0; index < unkn.length; index++) {
+                $(unkn[index]).removeClass('iactive')
+            }
+            let csx = $('#tab').children('div')
+            for (let index = 0; index < csx.length; index++) {
+                if ($(this).data('id') == $(csx)[index].id) {
+                    $('#' + ($(csx)[index].id)).removeClass('hideDiv')
+                } else {
+                    $('#' + ($(csx)[index].id)).addClass('hideDiv')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
