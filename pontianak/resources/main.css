@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #343b40;
+  padding: 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+#footer .copyright {
+  text-align: center;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+}
+
+#team .member {
+  cursor: pointer;
+}
+
+#team .member:hover {
+  background-color: #dadada;
+}
+
+.foot {
+  font-size: 12px;
+}
+
+.foot a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+}
+
+.foot a:hover {
+  color: #2dc997;
+}
+
+.foot .row {
+  width: 100% !important;
+}
+
+.foot .title {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+}
+
+.carousel .carousel-inner {
+  border-radius: 16px;
+}
+
+.carousel-inner img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/*# sourceMappingURL=main.css.map */
